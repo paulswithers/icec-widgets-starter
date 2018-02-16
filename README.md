@@ -19,9 +19,18 @@ For this walkthrough, you can use either an external terminal or the VS Code int
 
 git clone https://github.com/icstechsales/icec-widgets-starter.git
 
+### Open the repo directory in VS Code
+
+Click on Open folder... in the Welcome page 
+
+Navigate to the icec-widgets-starter and click on Openn
+
+
 ### Initialize and start the Express Server
 
 We will use an Express server to host our widgets during development and testing.  blah blah ...
+
+Open a new terminal by selecting **View** > **Integrated Terminal**
 
 cd icec-widgets-starter
 
@@ -34,6 +43,8 @@ npm run start
 Once the server is started you may receive a prompt to allow ngrok to be accessible via your desktop firewall, approve it. ngrok is a tunnel to your local Express server that will be hosting your widgets during development. 
 
 ### Build your first widget
+
+Click on the + in the first Terminal to open a second separate terminal window
 
 npm run buildForm
 
