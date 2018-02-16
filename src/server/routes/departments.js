@@ -17,7 +17,7 @@ exports.findAll = function (req, res, next) {
     var name = req.query.name;
     if (name) {
         res.send(departments.filter(function(department) {
-            return (department.homepage).indexOf(name.toLowerCase()) > -1;
+            return (department.homepage).toLowerCase().indexOf(name.toLowerCase()) > -1;
         }));
     } else {
         res.send(departments);
