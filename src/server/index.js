@@ -18,8 +18,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.get('/departments', employees.findAll);
-app.get('/departments/:id', employees.findById);
+app.get('/departments', departments.findAll);
+app.get('/departments/:id', departments.findById);
 
 app.listen(port, () => console.log('Server process ' + process.pid + ' is listening on ' + hostname + ':' + port));
 
