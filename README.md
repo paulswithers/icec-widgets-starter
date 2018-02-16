@@ -45,17 +45,17 @@ Add the following entries to your ICEC custom.js in the init section, not only t
 Substitute the value for the widgetServer to match the https url for your ngrok tunnel
 
 ```js
-		init: function () {
-            const widgetServer = "https://052040ed.ngrok.io";
-            XCC.X.formReact(widgetServer);
-		},
-		formReact: function (widgetServer) {
-			function content(container$, widgetData) {
-				$.get(widgetServer + "/formreact/", function (data) {
-					container$.html(data);
-				})
-			}
-			XCC.W.registerCustomWidget("Form React", "table", content);
-		},
+init: function () {
+    const widgetServer = "https://052040ed.ngrok.io";
+    XCC.X.formReact(widgetServer);
+},
+formReact: function (widgetServer) {
+    function content(container$, widgetData) {
+        $.get(widgetServer + "/formreact/", function (data) {
+            container$.html(data);
+        })
+    }
+    XCC.W.registerCustomWidget("Form React", "table", content);
+},
 ```
 
