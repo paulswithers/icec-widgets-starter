@@ -31,7 +31,7 @@ npm run build
 
 npm run start
 
-Once the server is started you may receive a prompt to allow ngrok to be accessible via your desktop firewall, approve it.  
+Once the server is started you may receive a prompt to allow ngrok to be accessible via your desktop firewall, approve it. ngrok is a tunnel to your local Express server that will be hosting your widgets during development. 
 
 ### Build your first widget
 
@@ -40,15 +40,14 @@ npm run buildForm
 
 ### Edit the ICEC custom.js
 
-Add the following entries to your ICEC custom.js in the init section
+Add the following entries to your ICEC custom.js in the init section, not only the lines that are added are shown for simplicity. View a more complete example of the custom.js here (/docs/images/customjs.png)
+
+Substitute the value for the widgetServer to match the https url for your ngrok tunnel
 
 ```js
 		init: function () {
-            ....
-
             const widgetServer = "https://052040ed.ngrok.io";
             XCC.X.formReact(widgetServer);
-
 		},
 		formReact: function (widgetServer) {
 			function content(container$, widgetData) {
@@ -58,6 +57,5 @@ Add the following entries to your ICEC custom.js in the init section
 			}
 			XCC.W.registerCustomWidget("Form React", "table", content);
 		},
-
-        ....
 ```
+
