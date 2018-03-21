@@ -6,7 +6,7 @@
     "clean": "npm run cleanProd",
     "cleanProd": "rimraf ./dist",
     "build": "npm run clean && npm run buildProd && npm run buildDev",
-    "buildProd": "NODE_ENV=production webpack -p --env.widgetsrc=custom --config webpack.config.js --progress --colors",
+    "buildProd": "cross-env NODE_ENV=production webpack -p --env.widgetsrc=custom --config webpack.config.js --progress --colors",
     "buildDev": "webpack -d --env.widgetsrc=devServer --config webpack.config.js --progress --colors"
   },
   "dependencies": {},

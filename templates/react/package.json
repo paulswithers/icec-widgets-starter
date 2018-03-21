@@ -56,7 +56,7 @@
   "scripts": {
     "clean": "npm run cleanProd",
     "cleanProd": "rimraf ./dist",
-    "buildProd": "NODE_ENV=production webpack -p --progress --colors",
+    "buildProd": "cross-env NODE_ENV=production webpack -p --progress --colors",
     "buildDev": "webpack -d --progress --colors",
     "build": "npm run clean && npm run buildProd && npm run buildDev"
   },
