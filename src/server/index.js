@@ -39,6 +39,10 @@ app.use(bodyParser.json());
 app.get("/regions", regions.findAll);
 app.get("/regions/:id", regions.findById);
 
+app.get('/', function (req, res) {
+  res.send('Welcome to the ICEC Custom Widgets Lab.');
+})
+
 app.listen(port, () =>
   console.log(
     "Server process " +
