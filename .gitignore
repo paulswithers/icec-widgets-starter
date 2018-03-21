@@ -1,6 +1,6 @@
 node_modules
 node_modules_linux
-build/logs
+build
 yarn.lock
 yarn-error.log
 package-lock.json
