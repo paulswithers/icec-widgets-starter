@@ -9,8 +9,6 @@ const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 const appHtml = resolveApp("public/index.html");
 
-const checkRequiredFiles = require("react-dev-utils/checkRequiredFiles");
-
 process.on("unhandledRejection", err => {
   throw err;
 });
@@ -50,11 +48,10 @@ if (process.argv[3] && process.argv[3] === "custom") {
   appTemplate = resolveApp("templates/html");
 }
 
-if (checkRequiredFiles([appSrc + "/package.json" , appSrc + "/webpack.config.js"])) {
-  console.log(chalk.red('Destination directory already exist.\n'));
+if (fs.existsSync(appSrc))
+{
+  console.log(chalk.red('A Widget directory already exist by that name, please use a different name.\n'));
   process.exit(1);
-} else {
-  console.log(chalk.green('\nThe above message can be ignored and will be removed in the next version of this file.\n'));
 }
 
 fs.copySync(appTemplate, appSrc, {

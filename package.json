@@ -42,8 +42,7 @@
     "fs-extra": "^5.0.0",
     "morgan": "^1.9.0",
     "nconf": "^0.10.0",
-    "ngrok": "^2.2.25",
-    "react-dev-utils": "^5.0.0"
+    "ngrok": "^2.2.25"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
