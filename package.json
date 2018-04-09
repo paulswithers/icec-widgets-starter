@@ -20,14 +20,14 @@
   "description": "Starter Pack of custom Widgets for IBM Connections Engagement Center. Includes a build environment to facilitate developing your own widgets.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/icstechsales/icec-starter-widgets.git"
+    "url": "https://github.com/icstechsales/icec-widgets-starter.git"
   },
   "engines": {
     "node": "^8.9.0"
   },
-  "homepage": "https://github.com/icstechsales/icec-starter-widgets",
+  "homepage": "https://github.com/icstechsales/icec-widgets-starter",
   "bugs": {
-    "url": "https://github.com/icstechsales/icec-starter-widgets/issues"
+    "url": "https://github.com/icstechsales/icec-widgets-starter/issues"
   },
   "private": true,
   "scripts": {
