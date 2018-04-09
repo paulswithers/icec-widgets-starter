@@ -36,38 +36,44 @@
 	/* Init function, please use this function as your constructor */
 	XCC.X.init = function () {
 
-		localizeString = XCC.L.get;
-		
-		/**  Develpment Widgets Section **/
-		// initialize customWidgets, if they are defined
-		$.each(XCC.X.customWidgetsDEV || [], function (i, widgetName) {
-			XCC.X[widgetName](devServer + widgetName ); //XCC.X.HelloWorld();
-		});
+		try {
+			localizeString = XCC.L.get;
+			
+			/**  Develpment Widgets Section **/
+			// initialize customWidgets, if they are defined
+			$.each(XCC.X.customWidgetsDEV || [], function (i, widgetName) {
+				XCC.X[widgetName](devServer + widgetName ); //XCC.X.HelloWorld();
+			});
 
-		// calculate path of customModules. Here we need to follow a name convention: All replaced Modules have the name "CUSTOM-<Originalname>"
-		var tempModuleObject = {};
-		$.each(XCC.X.replaceWidgetsDEV || [], function (i, val) {
-			var originalName = XCC.requirejs.s.contexts._.config.paths[val].split("/").pop(),
-				newName = "CUSTOM-" + originalName;
-			tempModuleObject[val] = devServer + newName;
-		});
-		$.extend(XCC.requirejs.s.contexts._.config.paths, tempModuleObject); // now we replace the original paths with our new Custom-paths
+			// calculate path of customModules. Here we need to follow a name convention: All replaced Modules have the name "CUSTOM-<Originalname>"
+			var tempModuleObject = {};
+			$.each(XCC.X.replaceWidgetsDEV || [], function (i, val) {
+				var originalName = XCC.requirejs.s.contexts._.config.paths[val].split("/").pop(),
+					newName = "CUSTOM-" + originalName;
+				tempModuleObject[val] = devServer + newName;
+			});
+			$.extend(XCC.requirejs.s.contexts._.config.paths, tempModuleObject); // now we replace the original paths with our new Custom-paths
 
-		/** Production Widgets Section **/
-		// initialize customWidgets, if they are defined
-		$.each(XCC.X.customWidgetsPROD || [], function (i, widgetName) {
-			XCC.X[widgetName](customPath + widgetName); //XCC.X.HelloWorld();
-		});
+			/** Production Widgets Section **/
+			// initialize customWidgets, if they are defined
+			$.each(XCC.X.customWidgetsPROD || [], function (i, widgetName) {
+				XCC.X[widgetName](customPath + widgetName); //XCC.X.HelloWorld();
+			});
 
-		// calculate path of customModules. Here we need to follow a name convention: All replaced Modules have the name "CUSTOM-<Originalname>"
-		var tempModuleObject = {};
-		$.each(XCC.X.replaceWidgetsPROD || [], function (i, val) {
-			var originalName = XCC.requirejs.s.contexts._.config.paths[val].split("/").pop(),
-				newName = "CUSTOM-" + originalName;
-			tempModuleObject[val] = customPath + newName;
-		});
-		$.extend(XCC.requirejs.s.contexts._.config.paths, tempModuleObject); // now we replace the original paths with our new Custom-paths
-		
+			// calculate path of customModules. Here we need to follow a name convention: All replaced Modules have the name "CUSTOM-<Originalname>"
+			var tempModuleObject = {};
+			$.each(XCC.X.replaceWidgetsPROD || [], function (i, val) {
+				var originalName = XCC.requirejs.s.contexts._.config.paths[val].split("/").pop(),
+					newName = "CUSTOM-" + originalName;
+				tempModuleObject[val] = customPath + newName;
+			});
+			$.extend(XCC.requirejs.s.contexts._.config.paths, tempModuleObject); // now we replace the original paths with our new Custom-paths
+		}
+		catch(err) {
+			console.log("An error occurred in custom.js, review the following error for details.")
+			console.log(err);
+			return;
+		}
 	};
 
 	XCC.X.navigation = function (widgetPath) {
