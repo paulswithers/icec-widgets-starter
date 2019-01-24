@@ -18,6 +18,7 @@
 
 	// These should custom Widgets you created and/or are making available.
 	XCC.X.customWidgetsDEV = [
+		"basicMuse"
 	];
 
 	// These should out of the box widgets that you are replacing (overriding) with your own (can be derivative work or new). Example: "communityOverview"
@@ -134,5 +135,16 @@
 		*/
 		XCC.W.registerCustomWidget("LAB8498 Hello World", "flag", myCustomWidget, myCustomEditor, save);
 	};
+
+	XCC.X.basicMuse = function (widgetPath) {
+		function content(container$, widgetData) {
+			XCC.require([widgetPath + ".js"], function (basicMuse) {
+				basicMuse.content(container$, widgetData);
+			});
+		}
+
+		XCC.W.registerCustomWidget("Basic Muse", "table", content);
+	};
+
 
 }(window));
