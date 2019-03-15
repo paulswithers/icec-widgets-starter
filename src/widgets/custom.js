@@ -18,6 +18,9 @@
 
 	// These should custom Widgets you created and/or are making available.
 	XCC.X.customWidgetsDEV = [
+		"vimeo",
+		"cssgrid",
+		"defaultActivityManager",
 		"basicMuse"
 	];
 
@@ -93,7 +96,44 @@
 		* @param  {[Object]} widgetData [The widget data]
 		* */
 		function myCustomWidget(container$, widgetData) {
-			container$.html("Hello World!");
+			XCC.require(["profiles"], function () {
+				var profile = XCC.P.getProfile();
+				var name = profile.getName();
+				var picture = profile.getImageUrl();
+				var email = profile.getEmail();
+				var phoneNumber = profile.getPhoneNumber();
+				var title = profile.getTitle();
+		
+				var html = `
+						<div class="col-xs-12 col-sm-12 col-md-12 col-md-offset-3">
+							<div class="well well-sm">
+								<div>
+									<div class="col-sm-4">
+										<img src=${picture} alt="" class="img-rounded img-responsive" />
+									</div>
+									<div class="col-sm-8">
+										<h4>Hello ${name}</h4>
+										<small style="display: block; color: #888;"><div title="San Diego, USA">San Diego, USA</div></small>
+										<p >
+											${title}
+											<br />
+											${phoneNumber}
+											<br />
+											${email}
+										</p>
+										<div class="btn-group">
+											<a href="#" class="btn btn-primary"><span class="fa fa-2x fa-facebook"></span></a>
+											<a href="#" class="btn btn-primary"><span class="fa fa-2x fa-google"></span></a>
+											<a href="#" class="btn btn-primary"><span class="fa fa-2x fa-twitter"></span></a>
+											<a href="#" class="btn btn-primary"><span class="fa fa-2x fa-linkedin"></span></a>
+										</div>
+										</div>
+									</div>
+								</div>
+							</div>
+					`
+				container$.html(html);
+			});
 		}
 
 		/**
@@ -134,6 +174,41 @@
 		* @param dontShowIn {String} optional: e.g.: Should not show in ":cloud:communites:cnx5:"
 		*/
 		XCC.W.registerCustomWidget("LAB8498 Hello World", "flag", myCustomWidget, myCustomEditor, save);
+	};
+	
+	XCC.X.cssgrid = function (widgetPath) {
+		function content(container$, widgetData) {
+			$.get(widgetPath + ".html", function (data) {
+				container$.html(data);
+			})
+		}
+		XCC.W.registerCustomWidget("LAB8498 CSS Grid", "th", content);
+	};
+
+	XCC.X.vimeo = function (widgetPath) {
+		function content(container$, widgetData) {
+			XCC.require(["https://luwes.github.io/vimeowrap.js/vimeowrap.js"], function () {
+				XCC.require(["https://luwes.github.io/vimeowrap.js/vimeowrap.playlist.js"], function () {
+					XCC.require(["https://luwes.github.io/vimeowrap.js/vimeowrap.carousel.js"], function () {
+						XCC.require([widgetPath + ".js"], function (vimeoWidget) {
+								vimeoWidget.content(container$, widgetData);
+						});
+					});
+				});
+			});
+		}
+
+		XCC.W.registerCustomWidget("LAB8498 Vimeo", "table", content);
+	};
+
+	XCC.X.defaultActivityManager = function (widgetPath) {
+		function content(container$, widgetData) {
+			XCC.require([widgetPath + ".js"], function (defaultActivityManager) {
+				defaultActivityManager.content(container$, widgetData);
+			});
+		}
+
+		XCC.W.registerCustomWidget("Default Activities", "table", content);
 	};
 
 	XCC.X.basicMuse = function (widgetPath) {
