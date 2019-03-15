@@ -9,7 +9,7 @@
  **************************************************************************** */
 (function (W) {
 	var localizeString;
-	var devServer = "https://xxxx.ngrok.io/";  //Change to match your development server's url
+	var devServer = "https://f49c6eba.ngrok.io/";  //Change to match your development server's url
 	var customPath = "/xcc/rest/public/custom/";
 
 	XCC.X = XCC.X || {};
@@ -219,6 +219,15 @@
 		}
 
 		XCC.W.registerCustomWidget("Basic Muse", "table", content);
+	};
+			
+	XCC.X.activityWidget = function (widgetPath) {
+		function createActivityWidget(container$, widgetData) {
+			XCC.require(["/xcc/rest/public/custom/CreateActivity.js"], function(createActivityWidget) {
+			   new createActivityWidget(container$);
+			});
+		}
+		XCC.W.registerCustomWidget("CreateActivity", "quote-right", createActivityWidget);
 	};
 
 
