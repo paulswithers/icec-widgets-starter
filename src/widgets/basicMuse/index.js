@@ -15,12 +15,11 @@
 				"secondValue": "test2"
 			}
 		};
-		console.log(bodyData);
 		$.ajax({
 			url: "/muse/data/post",
 			headers: { "Content-Type": "application/json" },
 			method: "POST",
-			data: bodyData
+			data: JSON.stringify(bodyData)
 		}).done(function (responseText) {
 			console.log(JSON.stringify(responseText));
 			if (responseText.message === "MUSE data saved") {
